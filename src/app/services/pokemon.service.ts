@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PokemonService {
 
-  private _endpoint = 'https://pokeapi.co/api/v2'
+  endpoint = 'https://pokeapi.co/api/v2'
 
   constructor(
     private http: HttpClient
@@ -18,7 +18,7 @@ export class PokemonService {
       limit: 20
     }
   ) {
-    return this.http.get(`${this._endpoint}/pokemon`, {
+    return this.http.get(`${this.endpoint}/pokemon`, {
       params
     });
   }
