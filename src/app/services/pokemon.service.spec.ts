@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { PokemonService } from './pokemon.service';
+import { faker } from '@faker-js/faker';
 
 describe('PokemonService', () => {
   let service: PokemonService, controller: HttpTestingController;
@@ -20,10 +21,10 @@ describe('PokemonService', () => {
   describe('pokemons', () => {
     it('pokemons list', (done) => {
       // Arange
-      const mockData: {name:string, url: string}[] = [{
-        name: "bulbasaur",
-        url: "https://pokeapi.co/api/v2/pokemon/1/"
-      }]
+      const mockData: {name:string, url: string}[] = Array(20).fill(0).map(() => ({
+        name: faker.name.firstName(),
+        url: faker.internet.url()
+      }))
       
       // Act
       service.pokemons().subscribe(data => {
